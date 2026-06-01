@@ -1,0 +1,15 @@
+name: success-tracker
+
+services:
+  success-tracker:
+    build: .
+    container_name: success-tracker
+    ports:
+      - "${HOST_PORT:-8000}:8000"
+    environment:
+      DATA_DIR: /data
+      PORT: 8000
+      APP_TZ_OFFSET_HOURS: 3
+    volumes:
+      - ./data:/data
+    restart: unless-stopped

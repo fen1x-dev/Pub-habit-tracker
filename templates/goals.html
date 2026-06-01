@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>$title</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#9AFF26">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <main class="app-shell goals-page" data-page="goals">
+        <header class="topbar">
+            <a class="daily-phrase" href="/" aria-label="Фраза дня">$daily_phrase</a>
+            <nav class="page-tabs" aria-label="Разделы">
+                <a href="/">Привычки</a>
+                <a class="is-active" href="/goals">Цели</a>
+            </nav>
+        </header>
+
+        <p class="goals-lead">Долгосрочные цели и заметки — важное, что нельзя забыть</p>
+
+        <form class="goals-form" id="taskForm">
+            <input id="taskTitle" name="title" type="text" maxlength="160" placeholder="Добавить цель или заметку..." autocomplete="off">
+            $goal_controls
+            <button type="submit">Добавить</button>
+        </form>
+
+        <section class="goal-stats" aria-label="Статистика целей">
+            <div>Всего: <strong>$total_goals</strong></div>
+            <div>Выполнено: <strong>$completed_goals</strong></div>
+            <div>Осталось: <strong>$remaining_goals</strong></div>
+        </section>
+
+        <section class="goals-stack">
+            $active_goal_groups
+            <section class="goal-group completed-group">
+                <h2>Выполненные</h2>
+                <ul class="goal-list" id="completedTasks">$completed_goals_list</ul>
+            </section>
+        </section>
+    </main>
+    <script src="/static/app.js"></script>
+</body>
+</html>

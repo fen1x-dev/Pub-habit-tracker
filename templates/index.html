@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>$title</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#9AFF26">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <main class="app-shell habits-page" data-page="habits" data-year="$year" data-month="$month">
+        <header class="topbar">
+            <a class="daily-phrase" href="/" aria-label="Фраза дня">$daily_phrase</a>
+            <nav class="page-tabs" aria-label="Разделы">
+                <a class="is-active" href="/">Привычки</a>
+                <a href="/goals">Цели</a>
+            </nav>
+        </header>
+
+        $dashboard
+
+        <section class="month-row">
+            <a class="square-nav" href="$prev_url" aria-label="$prev_label">‹</a>
+            <h1>$month_label</h1>
+            <a class="square-nav" href="$next_url" aria-label="$next_label">›</a>
+            <p>текущий месяц: <strong data-stat="month">$month_percent%</strong></p>
+        </section>
+
+        <section class="habit-board">
+            <div class="table-scroll">
+                <table class="habit-table" style="--table-min-width: ${habit_table_width}px; --table-mobile-min-width: ${habit_table_mobile_width}px;">
+                    <thead>
+                        <tr>
+                            <th class="habit-sticky">Привычка</th>
+                            $day_headers
+                            <th class="month-head">%мес</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        $habit_rows
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <form class="add-strip" id="habitForm">
+            <input id="habitName" name="name" type="text" maxlength="80" placeholder="+ Новая привычка..." autocomplete="off">
+            <button type="submit">Добавить</button>
+        </form>
+
+        $today_tasks
+    </main>
+    <script src="/static/app.js"></script>
+</body>
+</html>
